@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Harisai Karthikeyan - Personal Website</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #1a1a1a;
-            color: #ffffff;
+            color: #f8f9fa;
             margin: 0;
-            scroll-behavior: smooth; /* Smooth scrolling */
+            scroll-behavior: smooth;
+            line-height: 1.6;
         }
         .container {
             display: flex;
@@ -24,18 +25,22 @@
         }
         .sidebar {
             width: 350px;
-            padding: 20px;
-            background-color: #2d2d2d;
+            padding: 40px 20px; /* Increased padding to lower content */
+            background-color: #0d1117;
             position: fixed;
             height: 100vh;
             overflow-y: auto;
-            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
         }
         .main-content {
             flex: 1;
-            padding: 20px;
+            padding: 40px 20px; /* Increased padding for more space */
             background-color: #1a1a1a;
-            margin-left: 350px;
+            margin-left: 370px; /* Increased margin for more space */
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px; /* Increased margin to lower icons */
         }
         .social-icons a {
             color: #a0aec0;
@@ -48,27 +53,46 @@
             transform: translateY(-3px);
         }
         h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ffffff;
             animation: fadeIn 1s ease-in-out;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        nav a {
-            transition: color 0.3s, transform 0.3s;
-        }
-        nav a:hover {
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
             color: #ffffff;
-            transform: translateX(5px);
+            margin-bottom: 1.5rem;
         }
-        section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
         }
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
+        p {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            color: #a0aec0;
+            margin-bottom: 1rem;
+        }
+        .list-disc {
+            list-style: none;
+            padding-left: 0;
+        }
+        .list-disc li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 0.5rem;
+        }
+        .list-disc li::before {
+            content: "•";
+            color: #4a5568;
+            position: absolute;
+            left: 0;
         }
         .skill-badge {
             transition: background-color 0.3s, transform 0.3s;
@@ -83,30 +107,17 @@
             background-color: #4a5568;
             transform: scale(1.05);
         }
-        .list-disc {
-            list-style: none; /* Remove default bullet points */
-            padding-left: 0; /* Remove default padding */
+        .copyright {
+            text-align: center;
+            padding: 20px;
+            color: #a0aec0;
+            font-size: 0.875rem;
+            border-top: 1px solid #4a5568;
+            margin-top: 40px;
         }
-        .list-disc li {
-            position: relative;
-            padding-left: 20px; /* Add space for custom bullet */
-            opacity: 0;
-            transform: translateX(-20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .list-disc li.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .list-disc li::before {
-            content: "•"; /* Custom bullet point */
-            color: #ffffff; /* Bullet color */
-            position: absolute;
-            left: 0;
-            transition: transform 0.3s;
-        }
-        .list-disc li:hover::before {
-            transform: translateX(5px); /* Move bullet on hover */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
@@ -115,25 +126,61 @@
         .bounce {
             animation: bounce 0.6s ease-in-out;
         }
+        .slogan {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #a0aec0;
+            margin-bottom: 2rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .slogan span {
+            color: #2ecc71; /* Emerald green for "machine learning" */
+            animation: colorChange 3s infinite;
+        }
+        @keyframes colorChange {
+            0% { color: #2ecc71; }
+            50% { color: #3498db; }
+            100% { color: #2ecc71; }
+        }
+        .section-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .section-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <!-- Sidebar -->
         <div class="sidebar">
-            <h1 class="text-4xl font-bold">Harisai Karthikeyan</h1>
+            <h1>Harisai Karthikeyan</h1>
             <p class="text-sm text-gray-400 mt-2">Computer Science Student @ Virginia Tech</p>
             <p class="mt-4 text-sm">I'm passionate about quantitative finance, machine learning, and cybersecurity.</p>
             
             <nav class="mt-8">
-                <a href="#experience" class="block text-gray-400 hover:text-white py-2">Experience</a>
-                <a href="#education" class="block text-gray-400 hover:text-white py-2">Education</a>
-                <a href="#skills" class="block text-gray-400 hover:text-white py-2">Skills</a>
-                <a href="#activities" class="block text-gray-400 hover:text-white py-2">Activities</a>
-                <a href="#awards" class="block text-gray-400 hover:text-white py-2">Awards</a>
+                <a href="#experience" class="block text-gray-400 hover:text-white py-2 transition duration-300">
+                    <i class="fas fa-briefcase mr-2"></i>Experience
+                </a>
+                <a href="#education" class="block text-gray-400 hover:text-white py-2 transition duration-300">
+                    <i class="fas fa-graduation-cap mr-2"></i>Education
+                </a>
+                <a href="#skills" class="block text-gray-400 hover:text-white py-2 transition duration-300">
+                    <i class="fas fa-code mr-2"></i>Skills
+                </a>
+                <a href="#activities" class="block text-gray-400 hover:text-white py-2 transition duration-300">
+                    <i class="fas fa-tasks mr-2"></i>Activities
+                </a>
+                <a href="#awards" class="block text-gray-400 hover:text-white py-2 transition duration-300">
+                    <i class="fas fa-trophy mr-2"></i>Awards
+                </a>
             </nav>
 
-            <div class="social-icons mt-8">
+            <div class="social-icons">
                 <a href="mailto:harisaik@vt.edu" class="fab fa-envelope"></a>
                 <a href="https://www.linkedin.com/in/harisai-karthikeyan-219b87268/" class="fab fa-linkedin"></a>
                 <a href="https://github.com/EZCLAP03" class="fab fa-github"></a>
@@ -142,110 +189,127 @@
 
         <!-- Main Content -->
         <div class="main-content">
+            <p class="slogan"><span>Freshman</span> at Virginia Tech.</p>
+
             <section id="experience" class="mb-12">
-                <h2 class="text-2xl font-bold">Experience</h2>
-                <div class="mt-4">
-                    <h3 class="text-xl font-bold">Research Assistant</h3>
-                    <p class="text-gray-400">DVE Lab, Blacksburg, VA</p>
-                    <p class="text-sm text-gray-400">Oct 2024 – Present</p>
-                    <ul class="list-disc pl-5 mt-2">
-                        <li>Research assistant for VR-based cybersecurity digital twin for a water treatment facility using Unity, Arduino, and MQTT to simulate operational systems.</li>
-                        <li>Simulates cyberattack scenarios, enabling facility managers to respond to security threats within the virtual environment.</li>
-                    </ul>
-                </div>
-                <div class="mt-4">
-                    <h3 class="text-xl font-bold">Intern</h3>
-                    <p class="text-gray-400">Zilika Technologies, Remote</p>
-                    <p class="text-sm text-gray-400">Jul 2023 – Sep 2023</p>
-                    <ul class="list-disc pl-5 mt-2">
-                        <li>Wrote Makefile programs for synthesis flow in VLSI.</li>
-                        <li>Automated conversion between RTL Netlist to Gate-level Netlist using Python.</li>
-                    </ul>
-                </div>
-                <div class="mt-4">
-                    <h3 class="text-xl font-bold">Software Team Member</h3>
-                    <p class="text-gray-400">FRC Robotics, Saratoga, CA</p>
-                    <p class="text-sm text-gray-400">Aug 2022 – Aug 2023</p>
-                    <ul class="list-disc pl-5 mt-2">
-                        <li>Worked with a team to implement the drivetrain functionality using Java for FRC robotics.</li>
-                        <li>Enhanced the previous year's architecture by boosting movement precision through physics-based solutions.</li>
-                    </ul>
-                </div>
-                <div class="mt-4">
-                    <h3 class="text-xl font-bold">AI Intern</h3>
-                    <p class="text-gray-400">IBM, Remote</p>
-                    <p class="text-sm text-gray-400">Jun 2020 – Jul 2020</p>
-                    <ul class="list-disc pl-5 mt-2">
-                        <li>Developed real-time mask and social distance detection systems.</li>
-                        <li>Tested various strategies to decrease the architecture's latency, and made the system perform near real-time.</li>
-                        <li>Used Python's OpenCV and TensorFlow.</li>
-                    </ul>
+                <h2>Experience</h2>
+                <div class="section-content">
+                    <div class="mt-4">
+                        <h3>Research Assistant</h3>
+                        <p class="text-gray-400">DVE Lab, Blacksburg, VA</p>
+                        <p class="text-sm text-gray-400">Oct 2024 – Present</p>
+                        <ul class="list-disc pl-5 mt-2">
+                            <li>Research assistant for VR-based cybersecurity digital twin for a water treatment facility using Unity, Arduino, and MQTT to simulate operational systems.</li>
+                            <li>Simulates cyberattack scenarios, enabling facility managers to respond to security threats within the virtual environment.</li>
+                        </ul>
+                    </div>
+                    <div class="mt-4">
+                        <h3>Intern</h3>
+                        <p class="text-gray-400">Zilika Technologies, Remote</p>
+                        <p class="text-sm text-gray-400">Jul 2023 – Sep 2023</p>
+                        <ul class="list-disc pl-5 mt-2">
+                            <li>Wrote Makefile programs for synthesis flow in VLSI.</li>
+                            <li>Automated conversion between RTL Netlist to Gate-level Netlist using Python.</li>
+                        </ul>
+                    </div>
+                    <div class="mt-4">
+                        <h3>Software Team Member</h3>
+                        <p class="text-gray-400">FRC Robotics, Saratoga, CA</p>
+                        <p class="text-sm text-gray-400">Aug 2022 – Aug 2023</p>
+                        <ul class="list-disc pl-5 mt-2">
+                            <li>Worked with a team to implement the drivetrain functionality using Java for FRC robotics.</li>
+                            <li>Enhanced the previous year's architecture by boosting movement precision through physics-based solutions.</li>
+                        </ul>
+                    </div>
+                    <div class="mt-4">
+                        <h3>AI Intern</h3>
+                        <p class="text-gray-400">IBM, Remote</p>
+                        <p class="text-sm text-gray-400">Jun 2020 – Jul 2020</p>
+                        <ul class="list-disc pl-5 mt-2">
+                            <li>Developed real-time mask and social distance detection systems.</li>
+                            <li>Tested various strategies to decrease the architecture's latency, and made the system perform near real-time.</li>
+                            <li>Used Python's OpenCV and TensorFlow.</li>
+                        </ul>
+                    </div>
                 </div>
             </section>
 
             <section id="education" class="mb-12">
-                <h2 class="text-2xl font-bold">Education</h2>
-                <div class="mt-4">
-                    <h3 class="text-xl font-bold">Computer Science</h3>
-                    <p class="text-gray-400">Virginia Tech, Blacksburg, VA</p>
-                    <p class="text-sm text-gray-400">Sep 2024 – May 2028</p>
+                <h2>Education</h2>
+                <div class="section-content">
+                    <div class="mt-4">
+                        <h3>Computer Science</h3>
+                        <p class="text-gray-400">Virginia Tech, Blacksburg, VA</p>
+                        <p class="text-sm text-gray-400">Sep 2024 – May 2028</p>
+                    </div>
                 </div>
             </section>
 
             <section id="skills" class="mb-12">
-                <h2 class="text-2xl font-bold">Technical Skills</h2>
-                <div class="mt-4">
-                    <div class="flex flex-wrap gap-2 mt-2">
-                        <span class="skill-badge bg-gray-700 text-gray-300 px-3 py-1 rounded">Python</span>
-                        <span class="skill-badge bg-gray-700 text-gray-300 px-3 py-1 rounded">Java</span>
-                        <span class="skill-badge bg-gray-700 text-gray-300 px-3 py-1 rounded">Machine Learning</span>
-                        <span class="skill-badge bg-gray-700 text-gray-300 px-3 py-1 rounded">Unity</span>
-                        <span class="skill-badge bg-gray-700 text-gray-300 px-3 py-1 rounded">Arduino</span>
-                        <span class="skill-badge bg-gray-700 text-gray-300 px-3 py-1 rounded">VLSI</span>
-                        <span class="skill-badge bg-gray-700 text-gray-300 px-3 py-1 rounded">TensorFlow</span>
-                        <span class="skill-badge bg-gray-700 text-gray-300 px-3 py-1 rounded">OpenCV</span>
+                <h2>Technical Skills</h2>
+                <div class="section-content">
+                    <div class="mt-4">
+                        <div class="flex flex-wrap gap-2 mt-2">
+                            <span class="skill-badge bg-gray-700 text-gray-300 px-3 py-1 rounded">Python</span>
+                            <span class="skill-badge bg-gray-700 text-gray-300 px-3 py-1 rounded">Java</span>
+                            <span class="skill-badge bg-gray-700 text-gray-300 px-3 py-1 rounded">Machine Learning</span>
+                            <span class="skill-badge bg-gray-700 text-gray-300 px-3 py-1 rounded">Unity</span>
+                            <span class="skill-badge bg-gray-700 text-gray-300 px-3 py-1 rounded">Arduino</span>
+                            <span class="skill-badge bg-gray-700 text-gray-300 px-3 py-1 rounded">VLSI</span>
+                            <span class="skill-badge bg-gray-700 text-gray-300 px-3 py-1 rounded">TensorFlow</span>
+                            <span class="skill-badge bg-gray-700 text-gray-300 px-3 py-1 rounded">OpenCV</span>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <section id="activities" class="mb-12">
-                <h2 class="text-2xl font-bold">Activities</h2>
-                <div class="mt-4">
-                    <h3 class="text-xl font-bold">CMDA Hackathon, 2024</h3>
-                    <p class="text-gray-400">Collaborated to use and tweak the BERT model architecture for time series classification to analyze how environmental factors influence the migration patterns of American robins.</p>
-                </div>
-                <div class="mt-4">
-                    <h3 class="text-xl font-bold">Marriott Codefest, 2024</h3>
-                    <p class="text-gray-400">Collaborated to make a machine learning-based tool (XGBoost) to help prospective franchisees identify optimal hotel locations.</p>
-                </div>
-                <div class="mt-4">
-                    <h3 class="text-xl font-bold">Fintech Club, 2024</h3>
-                    <p class="text-gray-400">Programmed VaR and Monte Carlo simulations in Python to understand efficient portfolio allocation.</p>
-                </div>
-                <div class="mt-4">
-                    <h3 class="text-xl font-bold">Co-Founder, Suvriddhi, India, 2021</h3>
-                    <p class="text-gray-400">Co-founded a crowdfunding company to raise over 9 lacks (10,000 USD) for orphanages to buy computers in India. Led awareness campaigns and taught kids in orphanages about computer science.</p>
+                <h2>Activities</h2>
+                <div class="section-content">
+                    <div class="mt-4">
+                        <h3>CMDA Hackathon, 2024</h3>
+                        <p class="text-gray-400">Collaborated to use and tweak the BERT model architecture for time series classification to analyze how environmental factors influence the migration patterns of American robins.</p>
+                    </div>
+                    <div class="mt-4">
+                        <h3>Marriott Codefest, 2024</h3>
+                        <p class="text-gray-400">Collaborated to make a machine learning-based tool (XGBoost) to help prospective franchisees identify optimal hotel locations.</p>
+                    </div>
+                    <div class="mt-4">
+                        <h3>Fintech Club, 2024</h3>
+                        <p class="text-gray-400">Programmed VaR and Monte Carlo simulations in Python to understand efficient portfolio allocation.</p>
+                    </div>
+                    <div class="mt-4">
+                        <h3>Co-Founder, Suvriddhi, India, 2021</h3>
+                        <p class="text-gray-400">Co-founded a crowdfunding company to raise over 9 lacks (10,000 USD) for orphanages to buy computers in India. Led awareness campaigns and taught kids in orphanages about computer science.</p>
+                    </div>
                 </div>
             </section>
 
             <section id="awards" class="mb-12">
-                <h2 class="text-2xl font-bold">Awards</h2>
-                <div class="mt-4">
-                    <h3 class="text-xl font-bold">AP Scholar with Distinction, 2024</h3>
-                </div>
-                <div class="mt-4">
-                    <h3 class="text-xl font-bold">Top 5, MSET Health Hackathon, 2022</h3>
-                    <p class="text-gray-400">Developed an AI-powered hydration app using computer vision for real-time user engagement and positive reinforcement.</p>
-                </div>
-                <div class="mt-4">
-                    <h3 class="text-xl font-bold">1st Place, Stonehill Hackathon</h3>
-                    <p class="text-gray-400">Designed a gesture-controlled robot using Arduino and C to assist individuals with mobility impairments.</p>
-                </div>
-                <div class="mt-4">
-                    <h3 class="text-xl font-bold">2nd Place, Design Championship</h3>
-                    <p class="text-gray-400">Developed a multiplayer top-down shooter game in Python using PyGame to promote social bonding during COVID-19.</p>
+                <h2>Awards</h2>
+                <div class="section-content">
+                    <div class="mt-4">
+                        <h3>AP Scholar with Distinction, 2024</h3>
+                    </div>
+                    <div class="mt-4">
+                        <h3>Top 5, MSET Health Hackathon, 2022</h3>
+                        <p class="text-gray-400">Developed an AI-powered hydration app using computer vision for real-time user engagement and positive reinforcement.</p>
+                    </div>
+                    <div class="mt-4">
+                        <h3>1st Place, Stonehill Hackathon</h3>
+                        <p class="text-gray-400">Designed a gesture-controlled robot using Arduino and C to assist individuals with mobility impairments.</p>
+                    </div>
+                    <div class="mt-4">
+                        <h3>2nd Place, Design Championship</h3>
+                        <p class="text-gray-400">Developed a multiplayer top-down shooter game in Python using PyGame to promote social bonding during COVID-19.</p>
+                    </div>
                 </div>
             </section>
+
+            <!-- Copyright -->
+            <div class="copyright">
+                &copy; 2024 Harisai Karthikeyan. All rights reserved.
+            </div>
         </div>
     </div>
 
@@ -254,6 +318,7 @@
         const sections = document.querySelectorAll('section');
         const skillBadges = document.querySelectorAll('.skill-badge');
         const listItems = document.querySelectorAll('.list-disc li');
+        const sectionContents = document.querySelectorAll('.section-content');
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -274,6 +339,12 @@
         sections.forEach(section => observer.observe(section));
         skillBadges.forEach(badge => observer.observe(badge));
         listItems.forEach(item => observer.observe(item));
+        sectionContents.forEach(content => observer.observe(content));
+
+        // Disable scroll restoration
+        if (history.scrollRestoration) {
+            history.scrollRestoration = 'manual';
+        }
     </script>
 </body>
 </html>
