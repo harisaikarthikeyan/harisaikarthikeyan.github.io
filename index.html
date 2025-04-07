@@ -72,18 +72,17 @@
     nav a:hover::after { width: 100%; }
 
     main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Centers vertically */
-  align-items: center; /* Centers horizontally */
-  text-align: center;
-  padding: 0 1rem; /* Adjust padding if needed */
-  height: 100vh; /* Full viewport height */
-  background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+      height: 100vh;
+      background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
     }
 
-    /* NEW: Hero layout */
     .hero {
       display: flex;
       align-items: center;
@@ -102,15 +101,18 @@
       border-radius: 50%;
       object-fit: cover;
       border: 3px solid var(--accent);
+      animation: fadeIn 0.5s ease-in-out both;
     }
     h1 {
       font-size: 2.8rem;
       margin-bottom: 0.3rem;
+      animation: fadeInUp 0.5s ease-in-out 0.2s both;
     }
     p.subtitle {
       font-size: 1.1rem;
       opacity: 0.8;
       max-width: 600px;
+      animation: fadeInUp 0.5s ease-in-out 0.4s both;
     }
 
     .social {
@@ -122,11 +124,15 @@
     .social a {
       color: var(--muted);
       transition: color var(--transition), transform var(--transition);
+      animation: fadeIn 0.5s ease-in-out both;
     }
     .social a:hover {
       color: var(--accent);
       transform: translateY(-2px);
     }
+    .social a:nth-child(1) { animation-delay: 0.6s; }
+    .social a:nth-child(2) { animation-delay: 0.7s; }
+    .social a:nth-child(3) { animation-delay: 0.8s; }
 
     footer {
       text-align: center;
@@ -144,6 +150,16 @@
       h1 { font-size: 2.4rem; }
       p.subtitle { font-size: 1rem; }
     }
+
+    /* Keyframes for animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
@@ -151,11 +167,9 @@
   <header>
     <nav>
       <ul>
-<li><a href="https://github.com/EZCLAP03" target="_blank" rel="noopener noreferrer">github</a></li>
-       <li><a href="https://www.youtube.com/@ezclap0379" target="_blank" rel="noopener noreferrer">yt</a></li>
-      <li><a href="https://www.notion.so/Daily-s-1cc5c50f89fb804bb90fd3acff1d361c?pvs=4" target="_blank" rel="noopener noreferrer">misc</a></li>
-
-
+        <li><a href="https://github.com/EZCLAP03" target="_blank" rel="noopener noreferrer">github</a></li>
+        <li><a href="https://www.youtube.com/@ezclap0379" target="_blank" rel="noopener noreferrer">yt</a></li>
+        <li><a href="misc.html">misc</a></li>
       </ul>
     </nav>
   </header>
@@ -163,7 +177,7 @@
   <main>
     <div class="hero">
       <img
-        src="harisaik_original.jpg"
+        src="C:\Users\haris\Downloads\harisaik_original.jpg"
         alt="Hari"
         class="avatar"
       />
