@@ -1,210 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hari</title>
-  <link
-    href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap"
-    rel="stylesheet"
-  />
-  <!-- Font Awesome for social icons -->
-  <script
-    src="https://kit.fontawesome.com/your-kit-id.js"
-    crossorigin="anonymous"
-  ></script>
-  <style>
-    :root {
-      --bg: #111;
-      --fg: #eee;
-      --muted: #888;
-      --accent: #4caf50;
-      --transition: 0.2s ease-in-out;
-    }
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Montserrat', sans-serif;
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background: var(--bg);
-      color: var(--fg);
-      line-height: 1.5;
-    }
-    a {
-      color: var(--muted);
-      text-decoration: none;
-      transition: color var(--transition);
-    }
-    a:hover { color: var(--fg); }
-
-    header {
-      position: sticky;
-      top: 0;
-      background: rgba(17,17,17,0.9);
-      backdrop-filter: blur(5px);
-      padding: 1rem 2rem;
-      z-index: 10;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      justify-content: center;
-    }
-    nav a {
-      position: relative;
-      font-weight: 500;
-    }
-    nav a::after {
-      content: '';
-      position: absolute;
-      left: 0; bottom: -4px;
-      width: 0; height: 2px;
-      background: var(--accent);
-      transition: width var(--transition);
-    }
-    nav a:hover::after { width: 100%; }
-
-    main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 1rem;
-      height: 100vh;
-      background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
-    }
-
-    .hero {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      max-width: 800px;
-      width: 100%;
-      margin-bottom: 2rem;
-    }
-    .hero-text {
-      text-align: left;
-    }
-    .avatar {
-      flex-shrink: 0;
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--accent);
-      animation: fadeIn 0.5s ease-in-out both;
-    }
-    h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.3rem;
-      animation: fadeInUp 0.5s ease-in-out 0.2s both;
-    }
-    p.subtitle {
-      font-size: 1.1rem;
-      opacity: 0.8;
-      max-width: 600px;
-      animation: fadeInUp 0.5s ease-in-out 0.4s both;
-    }
-
-    .social {
-      display: flex;
-      gap: 1.5rem;
-      font-size: 1.4rem;
-      margin-top: 1.5rem;
-    }
-    .social a {
-      color: var(--muted);
-      transition: color var(--transition), transform var(--transition);
-      animation: fadeIn 0.5s ease-in-out both;
-    }
-    .social a:hover {
-      color: var(--accent);
-      transform: translateY(-2px);
-    }
-    .social a:nth-child(1) { animation-delay: 0.6s; }
-    .social a:nth-child(2) { animation-delay: 0.7s; }
-    .social a:nth-child(3) { animation-delay: 0.8s; }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.8rem;
-      opacity: 0.6;
-    }
-
-    @media (max-width: 700px) {
-      .hero {
-        flex-direction: column;
-        text-align: center;
-      }
-      .hero-text { text-align: center; }
-      h1 { font-size: 2.4rem; }
-      p.subtitle { font-size: 1rem; }
-    }
-
-    /* Keyframes for animations */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hari</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+    <div class="container">
+        <nav id="main-nav">
+            <a href="#home" class="active">Home</a>
+            <a href="#bookshelf">Bookshelf</a>
+            <a href="#notes">Notes</a>
+        </nav>
 
-  <header>
-    <nav>
-      <ul>
-        <li><a href="https://github.com/gimme-control" target="_blank" rel="noopener noreferrer">github</a></li>
-        <li><a href="https://www.youtube.com/@ezclap0379" target="_blank" rel="noopener noreferrer">yt</a></li>
-        <li><a href="https://www.notion.so/Daily-s-1cc5c50f89fb804bb90fd3acff1d361c?pvs=4" target="_blank" rel="noopener noreferrer">misc</a></li>
-      </ul>
-    </nav>
-  </header>
+        <section id="home" class="section active">
+            <div class="profile-header">
+                <div class="profile-pic">
+                    <img src="harisaik_original.jpg" alt="Harisai Karthikeyan"
+                        style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+                </div>
+                <div class="profile-info">
+                    <h1>Harisai Karthikeyan</h1>
+                    <p>C++, systems architecture, and reverse engineering. I also stream a lot of leetcode and
+                        projects live on YouTube.</p>
+                </div>
+            </div>
+        </section>
 
-  <main>
-    <div class="hero">
-      <img
-        src="harisaik_original.jpg"
-        alt="Hari"
-        class="avatar"
-      />
-      <div class="hero-text">
-        <h1>hari's personal website</h1>
-        <p class="subtitle">
-          programmer interested in perf optimization, ml and quant finance.
-        </p>
-      </div>
+        <section id="bookshelf" class="section">
+            <h1>Bookshelf</h1>
+            <div id="books-container">
+                <!-- Books will be inserted here by JS -->
+                <p>Loading library...</p>
+            </div>
+        </section>
+
+        <section id="notes" class="section">
+            <h1>Notes</h1>
+
+            <div id="notes-content">
+                <!-- This iframe loads the exported file seamlessly -->
+                <iframe id="notion-export-frame" src="data/notion.html"
+                    style="width: 100%; height: 800px; border: none; background: white;"></iframe>
+            </div>
+        </section>
+
     </div>
 
-    <div class="social">
-      <a href="https://github.com/yourusername" aria-label="GitHub">
-        <i class="fab fa-github"></i>
-      </a>
-      <a href="https://linkedin.com/in/yourusername" aria-label="LinkedIn">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="https://twitter.com/yourusername" aria-label="Twitter">
-        <i class="fab fa-twitter"></i>
-      </a>
-    </div>
-  </main>
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://github.com/gimme-control" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.youtube.com/@ezclap0379" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div>© 2025 Harisai Karthikeyan</div>
+        </div>
+    </footer>
 
-  <footer>
-    © 2025 harisai karthikeyan
-  </footer>
-
+    <script src="data/books.js"></script>
+    <script src="data/notes.js"></script>
+    <script src="js/app.js"></script>
 </body>
+
 </html>
