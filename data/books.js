@@ -15,7 +15,7 @@ const booksData = [
         "title": "1984",
         "author": "George Orwell",
         "isbn": "9780141187761",
-        "review": "first orwell book, loved it. ending was crazy though. "not acting, but genuinely loving big brother."",
+        "review": "first orwell book, loved it. ending was crazy though. 'not acting, but genuinely loving big brother.'",
         "rating": 5
     },
     {
